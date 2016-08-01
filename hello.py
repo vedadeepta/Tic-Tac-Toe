@@ -14,7 +14,7 @@ def compute():
 	for i in a:
 		c=c+1
 
-	return jsonify(r=c+1)
+	return jsonify(r=c)
 
 if __name__ == "__main__":
     app.run(debug=True)
