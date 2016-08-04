@@ -11,10 +11,10 @@ def compute():
 	c=0
 	a = request.args.get('a',type=str)
 
-	for i in a:
-		c=c+1
+	#for i in a:
+	#	c=c+1
 
-	return jsonify(r=c)
+	return jsonify(r=len(a))
 
 if __name__ == "__main__":
     app.run(debug=True)

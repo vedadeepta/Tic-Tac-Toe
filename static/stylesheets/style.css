@@ -7,6 +7,13 @@
     -ms-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+
+.heading
+{
+	padding: 10px;
+
+}
 h1
 {
 	font-family: 'Indie Flower', cursive;
@@ -19,10 +26,115 @@ h2
 	font-size: 300%;
 	color: rgba(28, 114, 167, 0.85);
 }
-.heading
+h3
 {
-	padding: 10px;
+	text-align: center;
+}
 
+
+
+.container
+{
+	margin: 20px;
+
+	display: -webkit-box;
+  	display: -moz-box;
+  	display: -ms-flexbox;
+  	display: -webkit-flex;
+	display: flex;
+}
+
+.masterbox
+{
+	margin: 5px;
+	margin-left: 10%;
+	/*border: 5px solid black;*/
+	width: 15%;
+	position: relative;
+}
+.masterbox #bottom
+{
+	position: absolute;
+	top: 90%;
+	left: 20%;
+}
+/*deals with arrow animaton*/
+.box
+{
+	position: relative;
+	top: 150px;
+	margin:5px; 
+	/*border: 5px solid blue;*/
+	width: 95%;
+}
+.box span
+{
+
+	position: absolute;
+	width: 40%;
+	background: #d3531a;
+	height: 9px;
+	border-radius: 9px;
+	-webkit-transition: .34s ease-in-out;
+    -moz-transition: .34s ease-in-out;
+    -o-transition: .34s ease-in-out;
+    transition: .34s ease-in-out;
+
+}
+.box span:nth-child(1)
+{
+	left:14%;
+	 -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.box span:nth-child(2)
+{
+	left:40%;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.box.uparrow span:nth-child(1)
+{
+	 -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-225deg);
+}
+
+.box.uparrow span:nth-child(2)
+{
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(225deg);
+}
+
+
+
+/*tic-tac-toe box*/
+
+.grid
+{
+	width: 35%;
+	margin-left: 20%;
+	/*border: 3px solid black;*/
+}
+.row
+{
+	display: flex;
+	width: 100%;
+	height: 150px;
+}
+.col-4
+{
+	width: 33.33%;
+	padding: 10px;
 }
 .rborder
 {
@@ -31,18 +143,6 @@ h2
 .cborder
 {
 	border-right: 2px solid #81d0ad;
-}
-.row
-{
-	margin: auto;
-	display: flex;
-	width: 35%;
-	height: 150px;
-}
-.col-4
-{
-	width: 33.33%;
-	padding: 10px;
 }
 .elem
 {
