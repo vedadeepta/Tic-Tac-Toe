@@ -19,16 +19,13 @@ h1
 	font-family: 'Indie Flower', cursive;
 	text-align: center;
 }
-h2
-{
-	font-family: 'Permanent Marker', cursive;
-	text-align: center;
-	font-size: 300%;
-	color: rgba(28, 114, 167, 0.85);
-}
+
 h3
 {
+	font-family: sans-serif;
 	text-align: center;
+	font-weight: lighter;
+	color:  rgb(79, 125, 148);
 }
 
 
@@ -36,19 +33,24 @@ h3
 .container
 {
 	margin: 20px;
+	position: relative;
+	/*border: 1px solid red;*/
 
 	display: -webkit-box;
   	display: -moz-box;
   	display: -ms-flexbox;
   	display: -webkit-flex;
 	display: flex;
+	flex-flow: row;
 }
+
 
 .masterbox
 {
+	max-width: 98%;
 	margin: 5px;
 	margin-left: 10%;
-	/*border: 5px solid black;*/
+	/*border: 1px solid black;*/
 	width: 15%;
 	position: relative;
 }
@@ -56,13 +58,127 @@ h3
 {
 	position: absolute;
 	top: 90%;
-	left: 20%;
+	left: 35%;
 }
+
+
+.animate
+{
+	position: relative;
+	top: 10px;
+	margin:5px; 
+	/*border: 5px solid blue;*/
+	width: 95%;
+	height: 25%;
+}
+.animate span
+{
+	position: absolute;
+	height:6px;
+	background: #d3531a;
+	border-radius: 9px;
+	width:36px;	
+	animation-duration:0s;
+    animation-iteration-count:6;
+    animation-direction: alternate;
+    animation-timing-function:  ease-in-out;
+}
+.animate span:nth-child(1), span:nth-child(2)
+{
+	left:10%;
+}
+.animate span:nth-child(3)
+{
+	width:60px;
+	left: 26%;
+}
+.animate span:nth-child(4),span:nth-child(5)
+{
+	left: 56%;
+}
+#mid
+{
+	top: 34.5%;
+	-webkit-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -o-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+    animation-name: spanthree;
+}
+#right-1
+{
+	top:25%;
+	-webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    animation-name: spanfour;
+}
+#right-2
+{
+	top:44%;
+	-webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    animation-name: spanfive;
+}
+#left-1
+{
+	top:25%;
+	-webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    transform: rotate(315deg);
+    animation-name: spanone;
+}
+#left-2
+{
+	top:44%;
+	-webkit-transform: rotate(-315deg);
+    -moz-transform: rotate(-315deg);
+    -o-transform: rotate(-315deg);
+    transform: rotate(-315deg);
+    animation-name: spantwo;
+}
+
+@keyframes spanone
+{
+	0%{transform:rotate(315deg);}
+	
+	100%{transform:rotate(45deg);}
+}
+@keyframes spantwo
+{
+	0% { transform:rotate(-315deg);}
+	
+	100% { transform:rotate(-45deg);}	
+}
+@keyframes spanfour
+{
+	0%{transform:rotate(45deg);}
+	
+	100%{transform:rotate(315deg);}
+}
+@keyframes spanfive
+{
+	0% { transform:rotate(-45deg);}
+	
+	100% { transform:rotate(-315deg);}	
+}
+@keyframes spanthree
+{
+	0% { transform:rotate(-60deg);}
+	
+	100% { transform:rotate(60deg);}	
+}
+
+
 /*deals with arrow animaton*/
 .box
 {
-	position: relative;
-	top: 150px;
+	position: absolute;
+	top: 52%;
 	margin:5px; 
 	/*border: 5px solid blue;*/
 	width: 95%;
@@ -73,7 +189,7 @@ h3
 	position: absolute;
 	width: 40%;
 	background: #d3531a;
-	height: 9px;
+	height: 6px;
 	border-radius: 9px;
 	-webkit-transition: .34s ease-in-out;
     -moz-transition: .34s ease-in-out;
@@ -101,18 +217,18 @@ h3
 
 .box.uparrow span:nth-child(1)
 {
-	 -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-225deg);
+	 -webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    transform: rotate(315deg);
 }
 
 .box.uparrow span:nth-child(2)
 {
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(225deg);
+	-webkit-transform: rotate(-315deg);
+	-moz-transform: rotate(-315deg);
+	-o-transform: rotate(-315deg);
+	transform: rotate(-315deg);
 }
 
 
@@ -121,9 +237,10 @@ h3
 
 .grid
 {
+	max-width: 98%;
 	width: 35%;
 	margin-left: 20%;
-	/*border: 3px solid black;*/
+	/*border: 2px solid black;*/
 }
 .row
 {
@@ -146,17 +263,68 @@ h3
 }
 .elem
 {
+	/*border: 1px solid red;*/
+	height: 100%;
 	width: 100%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
 }
-@media only screen and (max-width: 500px)
+.elem.cross span
 {
-         .row
-         { 
-         	height:75px;
-         }
-         h2
-         {
-         	font-size: 100%;
-         }
-        
+	height: 8%;
+    background: #d3531a;
+    border-radius: 9px;
+    width: 52%;
+    position: absolute;
+    top: 50%;
 }
+.elem.cross span:nth-child(1)
+{
+    left: 24%;
+    transform: rotate(45deg);
+}
+.elem.cross span:nth-child(2)
+{
+	left: 24%;
+    transform: rotate(-45deg);
+}
+
+.elem.circle span
+{
+	height: 50%;
+	width: 50%;
+	border: solid #d3531a;
+	border-width: 12px;
+	border-radius: 50%;
+	position: absolute;
+}
+.elem.circle span:nth-child(2)
+{
+	display: none;
+}
+
+/*@media only screen and (max-width: 500px)
+{
+
+
+	.container
+	{
+		border: 2px solid red;
+		width:100%;
+	}
+
+	.masterbox
+	{
+		display: none;
+	}
+	.grid
+	{
+		position: absolute;
+		top: 60%;
+		width: 60%;
+		width: 60%;
+		margin: auto;
+	}
+}*/

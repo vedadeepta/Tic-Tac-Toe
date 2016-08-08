@@ -1,18 +1,27 @@
-$(document).ready(function(){
+jQuery(document).ready(function(){
+
 	recent = false;
+	var cl = "circle"
 
 	$(".col-4").hover(function(){
-		var selector = "#" + this.id + " h2";
-		if($(selector).text() != "X" && $(selector).text() != "O")
+
+		
+		var selector = "#" + this.id + " .elem";
+		//console.log(selector);
+
+		if( $(selector).attr("class") == "elem" )
 		{
-			$(selector).text("X");
+			$(selector).addClass(cl);
+			$(".elem.circle span").css("border-width", $(".elem.circle span").width()/4 | 0 + "px" )
 			recent = true;
 		}
+
 	},function(){
-		var selector = "#" + this.id + " h2";
+
+		var selector = "#" + this.id + " .elem";
 		if(recent == true)
 		{
-			$(selector).text(" ");
+			$(selector).removeClass(cl);
 			recent = false;
 		}
 	});
@@ -20,23 +29,24 @@ $(document).ready(function(){
 	$(".col-4").bind('click',function(){
 
 		$(".box").toggleClass("uparrow");
+		$(".animate span").css("animation-duration",'0.8s').hide().show(0);
 
 		var selector = "";
+		var index="";
 
 		if(recent == true)
 		{
 			recent=false;
-
-			for(i=0; i < 9; i++)
+			if(cl === "cross")
 			{
-				selector = "#" + i +" h2";
-				if($(selector).text() != "X" && $(selector).text() != "O")
-				{
-					$(selector).text(" ");
-				} 
+				cl="circle";
+			}
+			else
+			{
+				cl="cross";
 			}
 	    }
 
-		
 	});
+
 });
