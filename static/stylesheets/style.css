@@ -263,7 +263,7 @@ h3
 }
 .elem
 {
-	/*border: 1px solid red;*/
+	/*border: 2px solid red;*/
 	height: 100%;
 	width: 100%;
 	display:flex;
@@ -274,7 +274,7 @@ h3
 .elem.cross span
 {
 	height: 8%;
-    background: #d3531a;
+    /*background: none;*/
     border-radius: 9px;
     width: 52%;
     position: absolute;
@@ -295,7 +295,7 @@ h3
 {
 	height: 50%;
 	width: 50%;
-	border: solid #d3531a;
+	border: solid #ec9771;
 	border-width: 12px;
 	border-radius: 50%;
 	position: absolute;
