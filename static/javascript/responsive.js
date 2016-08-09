@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
 	$(window).resize(function(){
 
 		//adjusting border-width of the circles	
-		for(var i=0; i<3; i++)//loop for workaround, because after resizing $(".elem.circle span").width() was returng 0
+		for(var i=0; i<5; i++)//loop for workaround, because after resizing $(".elem.circle span").width() was returng 0
 		{
 			$(".elem.circle span").css("border-width", $(".elem.circle span").width()/4.2+ "px" )
 		}
