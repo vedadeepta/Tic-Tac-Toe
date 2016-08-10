@@ -1,5 +1,8 @@
 jQuery(document).ready(function(){
 
+
+	
+
 	recent = false;
 	var cl = "circle"
 
@@ -18,11 +21,11 @@ jQuery(document).ready(function(){
 
 			if(cl === "cross")
 			{
-				$(selector +"."+cl+ " span").css("background","#ec9771");
+				$(selector +"."+cl+ " span").css("background","#e0a0ea");
 			}
 			else
 			{
-				$(selector +"."+cl+ " span").css("border","solid "+"#ec9771");
+				$(selector +"."+cl+ " span").css("border","solid "+"#e0a0ea");
 				$(selector + ".circle"+ " span").css("border-width", $(selector + ".circle"+ " span").width()/4.2  + "px" )
 			}
 		}
@@ -54,12 +57,12 @@ jQuery(document).ready(function(){
 			recent=false;
 			if(cl === "cross")
 			{
-				$(selector +"."+cl+ " span").css("background","#d0490d");
+				$(selector +"."+cl+ " span").css("background","#842c80");
 				cl="circle";
 			}
 			else
 			{
-				$(selector +"."+cl+ " span").css("border","solid "+"#d0490d");
+				$(selector +"."+cl+ " span").css("border","solid "+"#842c80");
 				$(selector + ".circle"+ " span").css("border-width", $(selector + ".circle"+ " span").width()/4.2 + "px" )
 				cl="cross";
 			}
