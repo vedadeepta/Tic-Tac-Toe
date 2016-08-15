@@ -3,31 +3,29 @@ jQuery(document).ready(function(){
 	//responsive tictactoe grid
 	//height of wach column depends on font-size;
 
-	$(".headingdown").addClass("headingup");
-	$(".transhead-down").addClass("transhead-up");
+      
 
 	if($(window).width() > 550)
 	{
 		$(".row").css("height",($(window).width()/9.10) + "px");
+
+
 		$(".animate span").not("#mid").css("width",$(".animate").width()/5.117 + "px");
 		$(".animate span").eq(2). css("width",$(".animate").width()/3.0702 + "px");
 	}
 	else
 	{
-		$(".row").css("height",($(window).width()/4.16) + "px");
+		$(".row").css("height",($(window).width()/4.16) +"px");
+		$(".phone").css("height",$(".phone").width()/3 +"px");
 	}
+
+   
+     
+    $(".elem").css("height",$(".col-4").height()+"px");
 
 	$(".elem.circle span").css("border-width", $(".elem.circle span").width()/4.2+ "px" )
 	
 	$(window).resize(function(){
-
-		//adjusting border-width of the circles	
-		for(var i=0; i<5; i++)//loop for workaround, because after resizing $(".elem.circle span").width() was returng 0
-		{
-			$(".elem.circle span").css("border-width", $(".elem.circle span").width()/4.2+ "px" )
-		}
-		//$(".elem.circle span").css("border-width", $(".elem.circle span").width()/3.5+ "px" )
-		//console.log($(".elem.circle span").width()/4.3 | 0);
 
 		//adjusting height of the row	
 		if($(window).width() > 550)
@@ -40,7 +38,15 @@ jQuery(document).ready(function(){
 		else
 		{
 			$(".row").css("height",($(window).width()/4.16) + "px");
+			$(".phone").css("height",$(".phone").width()/3 +"px");
+		}
+
+		for(i=0; i<=5; i++)
+		{
+       
+			$(".elem.circle span").css("border-width", $(".elem.circle span").width()/4.2+ "px" );
 		}
 		
-});
+ 		$(".elem").css("height",$(".col-4").height()+"px");
+	});
 });

@@ -1,6 +1,9 @@
 jQuery(document).ready(function(){
 
+	
 
+	$(".headingdown").addClass("headingup");
+	$(".transhead-down").addClass("transhead-up");
 	
 
 	recent = false;
@@ -26,7 +29,10 @@ jQuery(document).ready(function(){
 			else
 			{
 				$(selector +"."+cl+ " span").css("border","solid "+"#e0a0ea");
-				$(selector + ".circle"+ " span").css("border-width", $(selector + ".circle"+ " span").width()/4.2  + "px" )
+				for(i=0; i<=5; i++)
+				{
+					$(selector + ".circle"+ " span").css("border-width", $(selector + ".circle"+ " span").width()/4.2  + "px" );
+				}
 			}
 		}
 
@@ -46,24 +52,44 @@ jQuery(document).ready(function(){
 
 	$(".col-4").bind('click',function(){
 
-		$(".box").toggleClass("uparrow");
-		$(".animate span").css("animation-duration",'0.8s').hide().show(0);
 
 		var index="";
 		var selector = "#" + this.id + " .elem";
 
 		if(recent == true)
 		{
+
+			$(".box").toggleClass("uparrow");
+			$(".animate span").css("animation-duration",'0.8s').hide().show(0);
+			$(".hal").css("animation-duration",'1s').hide().show(0);
+
 			recent=false;
 			if(cl === "cross")
 			{
-				$(selector +"."+cl+ " span").css("background","#842c80");
-				cl="circle";
+				$(selector+"." + cl+" span").css("width","0%");
+				$(selector+"." + cl + " span:nth-child(1)").css("top","20%");
+				$(selector+"." + cl + " span:nth-child(2)").css("top","80%");
+				
+				$(selector +"."+cl + " span:nth-child(1)").animate({width: "52%", top:"50%"},450);
+				$(selector +"."+cl + " span:nth-child(2)").animate({width: "52%", top:"50%"},450);
+				$(selector +"."+cl + " span").css("background","#842c80");
+
+				cl="circle"
 			}
 			else
 			{
 				$(selector +"."+cl+ " span").css("border","solid "+"#842c80");
-				$(selector + ".circle"+ " span").css("border-width", $(selector + ".circle"+ " span").width()/4.2 + "px" )
+				var width=0;
+				for(i=0; i<=5;i++)
+				{
+					width =  $(selector + ".circle"+ " span").width()/5;
+				}
+
+				$(selector+"." + cl+" span").css("width","0%");
+				$(selector+"." + cl+" span").css("height","0%");
+				$(selector+"." + cl+" span").css("border-width","0%");
+				$(selector +"."+cl + " span:nth-child(1)").animate({width:"50%",height:"50%","border-width": width+"px"},300);
+
 				cl="cross";
 			}
 	    }
