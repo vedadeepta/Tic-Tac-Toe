@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+
+        <title>Tic Tac Toe</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet"  href="{{ url_for('static', filename='stylesheets/style.css') }}">
@@ -10,13 +12,17 @@
         <script type="text/javascript" src="{{ url_for('static', filename='javascript/jquery.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='javascript/hover.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='javascript/responsive.js')}}"></script>
-        
+        <script type="text/javascript" src="{{ url_for('static', filename='javascript/game.js')}}"></script>
+
     </head>
     <body>
 
-        <div class="headingdown">
-            <h1 class="transhead-down">Kath-Kut</h1>
-        </div>
+
+        <header>
+            <div class="headingdown">
+                <h1 class="transhead-down">Kath-Kut</h1>
+            </div>
+        </header>
 
         <!--div class = "box">
 
@@ -48,7 +54,6 @@
 
             <div class="phone">
                 <div class="hal"></div>
-                <h5></h5>
             </div>
 
             <div class="grid">
@@ -130,6 +135,12 @@
             </div>
 
         </div>
-
-    </body>
+        <footer>
+             <div class="restart">
+                    <h2 id="cpu"> HAL </h2>
+                    <h3 id="message">who starts?</h3>
+                    <h2 id="human"> YOU </h2>
+            </div>
+        </footer>
+   </body>
 </html>
