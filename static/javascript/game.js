@@ -50,16 +50,73 @@ function draw_move(data)
 			{
 				restart();
 			}
-	
-	
-			},4000);
+		},4000);
 	}
 
 } 
+function doSetTimeout(i,str)
+{
+	setTimeout(function(){
+		selector = "#" + str[i] + " .elem.circle span";
+		$(selector).css("border-color","red");
+	},i*650);
+}
 function restart()
 {
+
+	str = return_win_pos(process_board());
+
+	console.log(str);
+
+	var i=0;
+
+	while ( i < str.length)
+	{
+		doSetTimeout(i,str);
+		i++;
+
+		//setTimeout(function(){i++},500);
+	}
+
 	$(".restart").toggleClass("restart_show");
 
+}
+
+function return_win_pos(board) 
+{
+    
+    for(var i=0; i<board.length; i+=3)
+    {
+        if(board[i]!=="n" && board[i] === board[i+1] && board[i] === board[i+2] && board[i+1] === board[i+2])
+        {
+            return i + "" + (i+1) + "" + (i+2);
+        }
+    }
+
+    //columns
+    for(var i=0; i<3; i++)
+    {
+        if(board[i]!=="n" && board[i] === board[i+3] && board[i] === board[i+6] && board[i+3] === board[i+6])
+        {
+            return i + "" + (i+3) + "" + (i+6);
+        }
+    }
+
+    //diagonals
+    
+    if(board[0]!=="n" && board[0] === board[4] && board[0] === board[8] && board[4] === board[8])
+    {
+        return 0 + "" + 4 + "" + 8;
+    }
+    
+    else if(board[2]!=="n" && board[2] === board[4] && board[2] === board[6] && board[4] === board[6])
+    {
+        return 2 + "" + 4 + "" + 6;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 function checkWin(board) 

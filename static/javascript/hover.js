@@ -106,9 +106,7 @@ jQuery(document).ready(function(){
 				}
 				computer_done=false;
 
-				str = process_board();
-
-				if(checkScore(str) == 10)
+				if(checkScore(process_board()) == 10)
 				{
 					sendRequest(str);
 				}
