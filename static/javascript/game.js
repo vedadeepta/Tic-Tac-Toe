@@ -27,11 +27,22 @@ function draw_move(data)
 	else
 	{
 		$(".animate span").css("animation-duration",'0.8s').hide().show(0);
-		$(".hal").css("animation-duration",'0.8s').hide().show(0);
+		$(".hal").css("animation-duration",'1s').hide().show(0);
+
+		var timeout = 0;
+
+		if($(window).width() <= 550)
+		{
+			timeout = 6000;
+		}
+		else
+		{
+			timeout = 4000;
+		}
 	
 		setTimeout(function(){
 			var p=data.r;
-			console.log(p);
+
 			var selector = "#" + p + " .elem";
 	
 			$(selector).addClass("circle");
@@ -50,7 +61,7 @@ function draw_move(data)
 			{
 				restart();
 			}
-		},4000);
+		},timeout);
 	}
 
 } 
@@ -66,7 +77,6 @@ function restart()
 
 	str = return_win_pos(process_board());
 
-	console.log(str);
 
 	var i=0;
 
