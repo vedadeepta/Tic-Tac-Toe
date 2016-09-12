@@ -59,7 +59,7 @@ function doSetTimeout(i,str)
 	setTimeout(function(){
 		selector = "#" + str[i] + " .elem.circle span";
 		$(selector).css("border-color","red");
-	},i*650);
+	},(i+1)*800);
 }
 function restart()
 {
