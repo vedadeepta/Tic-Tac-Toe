@@ -11,6 +11,7 @@ function draw_cross(selector,cl)
 }
 function draw_circle(selector,cl)
 {
+
 	$(selector +"."+cl+ " span").css("border","solid "+"#842c80");
 	var width=0;
 	for(i=0; i<=5;i++)
@@ -18,25 +19,26 @@ function draw_circle(selector,cl)
 		width =  $(selector + ".circle"+ " span").width()/5;
 	}
 	
-		$(selector+"." + cl+" span").css("width","0%");
-		$(selector+"." + cl+" span").css("height","0%");
-		$(selector+"." + cl+" span").css("border-width","0%");
-		$(selector +"."+cl + " span:nth-child(1)").animate({width:"50%",height:"50%","border-width": width+"px"},300);
+	$(selector+"." + cl+" span").css("width","0%");
+	$(selector+"." + cl+" span").css("height","0%");
+	$(selector+"." + cl+" span").css("border-width","0%");
+	$(selector +"."+cl + " span:nth-child(1)").animate({width:"50%",height:"50%","border-width": width+"px"},300);
 
 }
 
-
-computer_done=true;
+computer_done=false;
+var cl = "circle"
 
 jQuery(document).ready(function(){
+
 
 
 	$(".headingdown").addClass("headingup");
 	$(".transhead-down").addClass("transhead-up");
 	
 	recent = false;
-	var cl = "circle"
-
+	
+	$(".restart").toggleClass("restart_show");
 
 	$(".col-4").hover(function(){
 
@@ -98,14 +100,64 @@ jQuery(document).ready(function(){
 				}
 				else
 				{
+					console.log(selector);
 					draw_circle(selector,cl);
 					cl="cross";
 				}
 				computer_done=false;
-				process_board();
+
+				str = process_board();
+
+				if(checkScore(str) == 10)
+				{
+					sendRequest(str);
+				}
+				else
+				{
+					restart();
+				}
 				
 				cl="circle"
 	    	}
 	    }
 	});
+
+
+	$("#cpu").bind('click',function(){
+
+		cl="circle";
+		clear_board();
+
+		$(".box").addClass("uparrow");
+
+		$(".restart").toggleClass("restart_show");
+
+		computer_done = false;
+		process_board();
+		sendRequest(str);
+	});
+
+	$("#cpu").hover(function(){
+
+		$(".box").addClass("uparrow");
+	});
+
+	$("#human").hover(function(){
+
+		$(".box").removeClass("uparrow");
+	});	
+
+	$("#human").bind('click',function(){
+
+		cl="cross";
+		clear_board();
+
+		$(".box").removeClass("uparrow");
+
+		$(".restart").toggleClass("restart_show");
+
+		computer_done=true;
+	});
+
+
 });

@@ -1,35 +1,127 @@
-function restart()
+function clear_board()
 {
-	$(".restart").toggleClass("restart_show");
-
-	for(i=0; i<9; i++)
-	{
-
-		var selector = "#" + i + " .elem";
-
-		if($(selector).hasClass("cross"))
+		for(i=0; i<9; i++)
 		{
-				$(selector +".cross" + " span").removeAttr('style');
-				$(selector).removeClass("cross");
-		}
-		else
-		{
-				$(selector +".circle" + " span").removeAttr('style');
-				$(selector).removeClass("circle");
-		}
 
-	}
+			var selector = "#" + i + " .elem";
+	
+			if($(selector).hasClass("cross"))
+			{
+					$(selector +".cross" + " span").removeAttr('style');
+					$(selector).removeClass("cross");
+			}
+			else
+			{
+					$(selector +".circle" + " span").removeAttr('style');
+					$(selector).removeClass("circle");
+			}
+		}
 }
 
 function draw_move(data)
 {
-	$(".animate span").css("animation-duration",'0.8s').hide().show(0);
-	$(".hal").css("animation-duration",'1s').hide().show(0);
+	if (data.r == -1 )
+	{
+		restart();
+	}
+	else
+	{
+		$(".animate span").css("animation-duration",'0.8s').hide().show(0);
+		$(".hal").css("animation-duration",'0.8s').hide().show(0);
+	
+		setTimeout(function(){
+			var p=data.r;
+			console.log(p);
+			var selector = "#" + p + " .elem";
+	
+			$(selector).addClass("circle");
+	
+			draw_circle(selector,"circle");
+	
+			cl="cross"
 
+			if(checkScore(process_board()) == 10)
+			{
+				$(".box").removeClass("uparrow");
+				computer_done=true; 
+			}
 
-	setTimeout(function(){ $("#bottom").text(data.r); computer_done=true; },4000);
+			else
+			{
+				restart();
+			}
+	
+	
+			},4000);
+	}
 
 } 
+function restart()
+{
+	$(".restart").toggleClass("restart_show");
+
+}
+
+function checkWin(board) 
+{
+    
+    for(var i=0; i<board.length; i+=3)
+    {
+        if(board[i]!=="n" && board[i] === board[i+1] && board[i] === board[i+2] && board[i+1] === board[i+2])
+        {
+            return true;
+        }
+    }
+
+    //columns
+    for(var i=0; i<3; i++)
+    {
+        if(board[i]!=="n" && board[i] === board[i+3] && board[i] === board[i+6] && board[i+3] === board[i+6])
+        {
+            return true;
+        }
+    }
+
+    //diagonals
+    
+    if(board[0]!=="n" && board[0] === board[4] && board[0] === board[8] && board[4] === board[8])
+    {
+        return true;
+    }
+    
+    else if(board[2]!=="n" && board[2] === board[4] && board[2] === board[6] && board[4] === board[6])
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function checkScore(board)
+{
+    if(checkWin(board))
+    {
+    	return 1;
+    }
+    else
+    {
+        for(var i=0; i<board.length; i++)
+        {
+            if(board[i] === "n")
+            {
+                return 10;
+            }
+        }
+        return 0;
+    }
+}
+
+function sendRequest(str)
+{
+	$.getJSON('/_compute_pos',{a : str },draw_move);
+}
 
 function process_board()
 {
@@ -49,12 +141,11 @@ function process_board()
 		}
 		else
 		{
-			str=str+"n"
+			str=str+"n";
 		}
 	}
 
-	$.getJSON('/_compute_pos',{a : str },draw_move);
-
+	return str;	
 }
 
 
