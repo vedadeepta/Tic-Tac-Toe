@@ -363,8 +363,9 @@
 {
 	/*border: 1px solid black;*/
 	position: absolute;
+	top: -1%;
 	left: 45%;
-	height: 85%;
+	/*height: 85%;*/
 	color: white;
 	font-family: sans-serif;
 
@@ -372,8 +373,9 @@
 .restart #cpu
 {
 	position: absolute;
+	top: -11%;
 	left: 12%;
-	height: 115%;
+	/*height: 115%;*/
 	color: white;
 	font-family: sans-serif;
 	cursor: pointer;
@@ -381,8 +383,9 @@
 .restart #human
 {
 	position: absolute;
+	top: -11%;
 	left: 80%;
-	height: 115%;
+	/*height: 115%;*/
 	color: white;
 	font-family: sans-serif;
 	cursor: pointer;
